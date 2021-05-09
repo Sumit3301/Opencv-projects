@@ -1,3 +1,4 @@
+#reading video from the camera
 import cv2
 capture=cv2.VideoCapture(0)
 
