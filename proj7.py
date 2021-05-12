@@ -8,4 +8,7 @@ gray=cv2.cvtColor(resized_image,cv2.COLOR_BGR2GRAY)
 cv2.imshow('Grey Image',gray)
 canny=cv2.Canny(resized_image,125,175)
 cv2.imshow('Canny',canny)
+
+contours,heiarchies = cv2.findContours(canny,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+
 cv2.waitKey(0)
