@@ -11,17 +11,18 @@ blank=np.zeros(img.shape,dtype='uint8')
 
 gray=cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 cv2.imshow('Grey Image',gray)
-blur=cv2.GaussianBlur(gray,(1,1),cv2.BORDER_DEFAULT)
+blur=cv2.GaussianBlur(gray,(3,3),cv2.BORDER_DEFAULT)
 cv2.imshow('Blur',blur)
 
 ret,thresh = cv2.threshold(blur,125,255,cv2.THRESH_BINARY)
 
-#canny=cv2.Canny(blur,125,175)
+canny=cv2.Canny(blur,125,175)
+cv2.imshow('canny Image',canny)
 
 contours,heiarchies = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 cv2.imshow('Thresh',thresh)
 print(len(contours))
 
-cv2.drawContours(blank,contours,-1,(0,0,255),2)
+cv2.drawContours(blank,contours,-1,(0,0,255),1)
 cv2.imshow('Contours',blank)
 cv2.waitKey(0)
